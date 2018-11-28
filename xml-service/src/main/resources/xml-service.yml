@@ -1,0 +1,27 @@
+# HTTP Server
+server:
+  port: 3333   # HTTP (Tomcat) port
+
+# Spring properties
+spring:
+  application:
+    name: xml-service  # Identify this application
+  logging:
+    level:
+      org.springframework: WARN
+      org.hibernate: WARN
+      
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+    enabled: true
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    
+# Ribbon config
+ribbon:
+  eureka:
+    enabled: true
