@@ -1,18 +1,21 @@
 package com.demo.db.resource;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.db.dto.DocumentDto;
-import com.demo.db.mapper.DocumentMapper;
 import com.demo.db.service.DocumentService;
 
 @RestController
-@RequestMapping("/rest/db/documents")
+@RequestMapping("/rest/v1/documents")
 public class DbServiceResource {
 
 	private static Logger logger = Logger.getLogger(DbServiceResource.class.getName());
@@ -20,11 +23,22 @@ public class DbServiceResource {
 	@Autowired
 	private DocumentService documentService;
 	
-	@Autowired
-	private DocumentMapper documentMapper;
-	
+	@PostMapping
 	public void saveDocument(@RequestBody DocumentDto documentDto){
 		logger.info("Document Resource called");
-		documentService.saveDocument(documentMapper.mapToDomain(documentDto));
+		documentService.saveDocument(documentDto);
+	}
+	
+	
+	@GetMapping("/{id}")
+	public DocumentDto getDocumentById(@PathVariable("id") Integer id){
+		logger.info("Get DocumentById called");
+		return documentService.getDocumentById(id);
+	}
+	
+	@GetMapping()
+	public List<DocumentDto> getDocuments(){
+		logger.info("Document Resource called");
+		return documentService.getDocuments();
 	}
 }

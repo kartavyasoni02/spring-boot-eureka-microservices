@@ -1,9 +1,15 @@
 package com.demo.db.service;
 
-import com.demo.db.model.Document;
+import java.util.List;
+
+import com.demo.db.dto.DocumentDto;
 
 public interface DocumentService {
 	
-	public void saveDocument(Document document);
+	public void saveDocument(DocumentDto document);
+
+	public DocumentDto getDocumentById(Integer id);
+
+	public List<DocumentDto> getDocuments();
 
 }
