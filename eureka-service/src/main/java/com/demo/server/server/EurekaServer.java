@@ -3,7 +3,6 @@ package com.demo.server.server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  * All you need to run a Eureka registration server.
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @EnableEurekaServer
-@ComponentScan(useDefaultFilters = false)
 public class EurekaServer {
 
 	/**
@@ -23,8 +21,6 @@ public class EurekaServer {
 	 */
 	public static void main(String[] args) {
 		// Tell server to look for eureka-service.properties or eureka-service.yml
-		System.setProperty("spring.config.name", "eureka-service");
-
 		SpringApplication.run(EurekaServer.class, args);
 	}
 }
