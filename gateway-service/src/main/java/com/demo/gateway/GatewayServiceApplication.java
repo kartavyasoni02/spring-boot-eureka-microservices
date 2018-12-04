@@ -39,7 +39,7 @@ public class GatewayServiceApplication {
 	@Bean
 	public CustomFallbackProvider txtZuulFallbackProvider() {
 		CustomFallbackProvider txtZuulFallback = new CustomFallbackProvider();
-		txtZuulFallback.setRoute("xml-api");
+		txtZuulFallback.setRoute("txt");
 		return txtZuulFallback;
 	}
 }

@@ -51,5 +51,12 @@ public class WebController {
 
 		return new DocumentDto();
 	}
+	
+	public void saveFileData(String content, String name) {
+		DocumentDto document = new DocumentDto();
+		document.setContent(content);
+		document.setFileType(name);
+		restTemplate.postForObject("http://db-service/rest/v1/documents", document, Void.class);
+	}
 
 }
